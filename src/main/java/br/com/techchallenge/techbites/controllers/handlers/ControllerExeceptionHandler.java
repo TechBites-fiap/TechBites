@@ -1,12 +1,8 @@
 package br.com.techchallenge.techbites.controllers.handlers;
 
 
-import br.com.techchallenge.techbites.DTOs.DuplicateKeyDTO;
-import br.com.techchallenge.techbites.DTOs.ErrorResponseDTO;
-import br.com.techchallenge.techbites.DTOs.ResourceNotFoundDTO;
-import br.com.techchallenge.techbites.DTOs.ValidationErrorDTO;
-import br.com.techchallenge.techbites.services.exceptions.DuplicateKeyException;
-import br.com.techchallenge.techbites.services.exceptions.ResourceNotFoundException;
+import br.com.techchallenge.techbites.DTOs.*;
+import br.com.techchallenge.techbites.services.exceptions.*;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -139,6 +135,48 @@ public class ControllerExeceptionHandler {
 
         log.warn("Type mismatch error: [{} {}] - {}", method, path, errors);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ValidationErrorDTO(errors, status, method, path));
+    }
+
+    @ExceptionHandler(InvalidCurrentPasswordException.class)
+    public ResponseEntity<PasswordExceptionDTO> handleInvalidCurrentPasswordException(
+            InvalidCurrentPasswordException ex,
+            HttpServletRequest request
+    ) {
+        var error = "Authentication Failed";
+        var status = HttpStatus.UNAUTHORIZED.value();
+        var method = request.getMethod();
+        var path = request.getRequestURI();
+
+        log.warn("The current password provided is incorrect.");
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new PasswordExceptionDTO(ex.getMessage() , error , status , method , path ));
+    }
+
+    @ExceptionHandler(HandleNewPasswordSameAsCurrent.class)
+    public ResponseEntity<PasswordExceptionDTO> handleHandleNewPasswordSameAsCurrent(
+            HandleNewPasswordSameAsCurrent ex,
+            HttpServletRequest request
+    ) {
+        var error = "Validation Error";
+        var status = HttpStatus.BAD_REQUEST.value();
+        var method = request.getMethod();
+        var path = request.getRequestURI();
+
+        log.warn("New password cannot be the same as the current password.");
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new PasswordExceptionDTO(ex.getMessage() , error , status , method , path ));
+    }
+
+    @ExceptionHandler(HandleNewPasswordNotSameAsConfirmPassword.class)
+    public ResponseEntity<PasswordExceptionDTO> handleHandleNewPasswordSameAsCurrent(
+            HandleNewPasswordNotSameAsConfirmPassword ex,
+            HttpServletRequest request
+    ) {
+        var error = "Validation Error";
+        var status = HttpStatus.BAD_REQUEST.value();
+        var method = request.getMethod();
+        var path = request.getRequestURI();
+
+        log.warn("New password and confirmation do not match.");
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new PasswordExceptionDTO(ex.getMessage() , error , status , method , path ));
     }
 
 

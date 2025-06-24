@@ -1,15 +1,18 @@
 package br.com.techchallenge.techbites.services;
 
+import br.com.techchallenge.techbites.DTOs.ChangePasswordDTO;
 import br.com.techchallenge.techbites.DTOs.UserRequestDTO;
 import br.com.techchallenge.techbites.DTOs.UserResponseDTO;
 import br.com.techchallenge.techbites.entities.User;
 import br.com.techchallenge.techbites.mappers.UserMapper;
 import br.com.techchallenge.techbites.repositories.UserRepository;
-import br.com.techchallenge.techbites.services.exceptions.DuplicateKeyException;
-import br.com.techchallenge.techbites.services.exceptions.UserNotFoundException;
+import br.com.techchallenge.techbites.services.exceptions.*;
+import jakarta.xml.bind.ValidationException;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Sort;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -85,4 +88,25 @@ public class UserService {
         }
     }
 
+    public void changePassword(ChangePasswordDTO changePasswordDTO) {
+        User entity = this.repository.findByEmail(changePasswordDTO.email())
+                .orElseThrow(() -> new UserNotFoundException("email" , changePasswordDTO.email()));
+
+        if (!entity.getPassword().equals(changePasswordDTO.currentPassword())) {
+            throw new InvalidCurrentPasswordException();
+        }
+
+        if (entity.getPassword().equals(changePasswordDTO.newPassword())) {
+            throw new HandleNewPasswordSameAsCurrent();
+        }
+
+        if (!changePasswordDTO.newPassword().equals(changePasswordDTO.confirmNewPassword())) {
+            throw new HandleNewPasswordNotSameAsConfirmPassword();
+        }
+
+        entity.setPassword(changePasswordDTO.newPassword());
+        entity.setLastUpdatedAt(LocalDateTime.now());
+        this.repository.save(entity);
+
+    }
 }

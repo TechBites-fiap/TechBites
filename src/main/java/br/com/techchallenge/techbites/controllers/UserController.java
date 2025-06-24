@@ -1,5 +1,6 @@
 package br.com.techchallenge.techbites.controllers;
 
+import br.com.techchallenge.techbites.DTOs.ChangePasswordDTO;
 import br.com.techchallenge.techbites.DTOs.UserRequestDTO;
 import br.com.techchallenge.techbites.DTOs.UserResponseDTO;
 import br.com.techchallenge.techbites.services.UserService;
@@ -89,6 +90,12 @@ public class UserController {
     public ResponseEntity<Void> enableUserById(
             @Parameter(description = "ID do usuário a ser habilitado", example = "2") @PathVariable Long id) {
         service.enableUserById(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("/auth/password")
+    public ResponseEntity<Void> changePassword(@Valid @RequestBody ChangePasswordDTO changePasswordDTO) {
+        service.changePassword(changePasswordDTO);
         return ResponseEntity.noContent().build();
     }
 
