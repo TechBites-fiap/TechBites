@@ -1,7 +1,7 @@
 package br.com.techchallenge.techbites.mappers;
 
-import br.com.techchallenge.techbites.DTOs.UserRequestDTO;
-import br.com.techchallenge.techbites.DTOs.UserResponseDTO;
+import br.com.techchallenge.techbites.dtos.UserRequestDTO;
+import br.com.techchallenge.techbites.dtos.UserResponseDTO;
 import br.com.techchallenge.techbites.entities.User;
 import org.springframework.stereotype.Component;
 

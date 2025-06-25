@@ -1,8 +1,9 @@
 package br.com.techchallenge.techbites.controllers.handlers;
 
 
-import br.com.techchallenge.techbites.DTOs.*;
+import br.com.techchallenge.techbites.dtos.*;
 import br.com.techchallenge.techbites.services.exceptions.*;
+import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -93,6 +94,7 @@ public class ControllerExeceptionHandler {
 
     }
 
+    // MÉTODO APRIMORADO
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<ValidationErrorDTO> handleHttpMessageNotReadableException(
             HttpMessageNotReadableException ex,
@@ -103,10 +105,20 @@ public class ControllerExeceptionHandler {
         var path = request.getRequestURI();
         List<String> errors = new ArrayList<>();
 
-        if (ex.getCause() instanceof InvalidFormatException invalidFormatException &&
+        Throwable cause = ex.getCause();
+
+        if (cause instanceof InvalidFormatException invalidFormatException &&
                 invalidFormatException.getTargetType().equals(Role.class)) {
+
             errors.add("role : Invalid role. Allowed values: ADMIN, USER, USER_RESTAURANT.");
+
+        } else if (cause instanceof UnrecognizedPropertyException exCause &&
+                exCause.getPropertyName().equals("password")) {
+
+            errors.add("O campo 'password' não pode ser enviado para este endpoint. Utilize a rota específica (PATCH) de alteração de senha.");
+
         } else {
+            // Mensagem genérica para todos os outros erros de formatação de JSON
             errors.add("Malformed JSON request.");
         }
 

@@ -1,4 +1,4 @@
-package br.com.techchallenge.techbites.DTOs;
+package br.com.techchallenge.techbites.dtos;
 
 import java.time.Instant;
 
@@ -7,5 +7,6 @@ public record ErrorResponseDTO(
         int status,
         String error,
         String message,
-        String path, String method) {
+        String path,
+        String method) {
 }

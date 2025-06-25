@@ -1,16 +1,16 @@
 package br.com.techchallenge.techbites.services;
 
-import br.com.techchallenge.techbites.DTOs.ChangePasswordDTO;
-import br.com.techchallenge.techbites.DTOs.UserRequestDTO;
-import br.com.techchallenge.techbites.DTOs.UserResponseDTO;
+import br.com.techchallenge.techbites.dtos.ChangePasswordDTO;
+import br.com.techchallenge.techbites.dtos.UserRequestDTO;
+import br.com.techchallenge.techbites.dtos.UserResponseDTO;
+import br.com.techchallenge.techbites.dtos.UserUpdateRequestDTO;
 import br.com.techchallenge.techbites.entities.User;
 import br.com.techchallenge.techbites.mappers.UserMapper;
 import br.com.techchallenge.techbites.repositories.UserRepository;
 import br.com.techchallenge.techbites.services.exceptions.*;
-import jakarta.xml.bind.ValidationException;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Sort;
-import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -21,10 +21,12 @@ public class UserService {
 
     private final UserRepository repository;
     private final UserMapper mapper;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository, UserMapper userMapper) {
+    public UserService(UserRepository userRepository, UserMapper userMapper, PasswordEncoder passwordEncoder) {
         this.repository = userRepository;
         this.mapper = userMapper;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public UserResponseDTO createUser(UserRequestDTO userDto) {
@@ -32,6 +34,8 @@ public class UserService {
         this.validateEmail(userDto.email());
 
         User entity = this.mapper.toEntity(userDto);
+        String encryptedPassword = passwordEncoder.encode(userDto.password());
+        entity.setPassword(encryptedPassword);
         entity.setActive(true);
         return this.mapper.toDTO(repository.save(entity));
     }
@@ -54,19 +58,30 @@ public class UserService {
                 .map(this.mapper::toDTO);
     }
 
-    public UserResponseDTO updateUserById(Long id, UserRequestDTO newData) {
+    public UserResponseDTO updateUserById(Long id, UserUpdateRequestDTO updateRequest) { // <-- 1. Recebe o DTO correto
         User existingUser = repository.findById(id)
-                .orElseThrow(() -> new UserNotFoundException("id" , id.toString()));
+                .orElseThrow(() -> new UserNotFoundException("id", id.toString()));
 
-        Optional<User> userByEmail = repository.findByEmail(newData.email());
-
-        if (userByEmail.isPresent() && !userByEmail.get().getId().equals(id)) {
-             throw new DuplicateKeyException("User" , "email" , newData.email());
+        // A validação de e-mail duplicado continua a mesma, mas usando o novo DTO
+        if (updateRequest.email() != null) {
+            Optional<User> userByEmail = repository.findByEmail(updateRequest.email());
+            if (userByEmail.isPresent() && !userByEmail.get().getId().equals(id)) {
+                throw new DuplicateKeyException("User", "email", updateRequest.email());
+            }
+            existingUser.setEmail(updateRequest.email());
         }
 
-        this.mapper.updateEntity(existingUser, newData);
+        if (updateRequest.name() != null) {
+            existingUser.setName(updateRequest.name());
+        }
 
-        return this.mapper.toDTO(this.repository.save(existingUser));
+        if (updateRequest.role() != null) {
+            existingUser.setRole(updateRequest.role());
+        }
+
+        User updatedUser = this.repository.save(existingUser);
+
+        return this.mapper.toDTO(updatedUser);
     }
 
     public void deleteUserById(Long id) {
@@ -92,11 +107,11 @@ public class UserService {
         User entity = this.repository.findByEmail(changePasswordDTO.email())
                 .orElseThrow(() -> new UserNotFoundException("email" , changePasswordDTO.email()));
 
-        if (!entity.getPassword().equals(changePasswordDTO.currentPassword())) {
+        if (!passwordEncoder.matches(changePasswordDTO.currentPassword(), entity.getPassword())) {
             throw new InvalidCurrentPasswordException();
         }
 
-        if (entity.getPassword().equals(changePasswordDTO.newPassword())) {
+        if (passwordEncoder.matches(changePasswordDTO.newPassword(), entity.getPassword())) {
             throw new HandleNewPasswordSameAsCurrent();
         }
 
@@ -104,7 +119,7 @@ public class UserService {
             throw new HandleNewPasswordNotSameAsConfirmPassword();
         }
 
-        entity.setPassword(changePasswordDTO.newPassword());
+        entity.setPassword(passwordEncoder.encode(changePasswordDTO.newPassword()));
         entity.setLastUpdatedAt(LocalDateTime.now());
         this.repository.save(entity);
 

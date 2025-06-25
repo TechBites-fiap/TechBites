@@ -1,8 +1,6 @@
 package br.com.techchallenge.techbites.controllers;
 
-import br.com.techchallenge.techbites.DTOs.ChangePasswordDTO;
-import br.com.techchallenge.techbites.DTOs.UserRequestDTO;
-import br.com.techchallenge.techbites.DTOs.UserResponseDTO;
+import br.com.techchallenge.techbites.dtos.*;
 import br.com.techchallenge.techbites.services.UserService;
 
 import jakarta.validation.Valid;
@@ -62,13 +60,12 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    @Operation(summary = "Atualizar usuário", description = "Atualiza os dados de um usuário existente")
+    @Operation(summary = "Atualizar usuário", description = "Atualiza os dados de um usuário existente (não altera a senha)")
     public ResponseEntity<UserResponseDTO> updateUser(
-            @Valid
             @Parameter(description = "ID do usuário a ser atualizado") @PathVariable Long id,
-            @RequestBody UserRequestDTO userRequest) {
-        return ResponseEntity.status(HttpStatus.OK).body(service.updateUserById(id, userRequest));
+            @Valid @RequestBody UserUpdateRequestDTO userUpdateRequest) {
 
+        return ResponseEntity.ok(service.updateUserById(id, userUpdateRequest));
     }
 
     @DeleteMapping("/{id}")
@@ -90,12 +87,6 @@ public class UserController {
     public ResponseEntity<Void> enableUserById(
             @Parameter(description = "ID do usuário a ser habilitado", example = "2") @PathVariable Long id) {
         service.enableUserById(id);
-        return ResponseEntity.noContent().build();
-    }
-
-    @PatchMapping("/auth/password")
-    public ResponseEntity<Void> changePassword(@Valid @RequestBody ChangePasswordDTO changePasswordDTO) {
-        service.changePassword(changePasswordDTO);
         return ResponseEntity.noContent().build();
     }
 

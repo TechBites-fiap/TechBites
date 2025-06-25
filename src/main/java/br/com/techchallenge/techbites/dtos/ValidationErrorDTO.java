@@ -1,4 +1,4 @@
-package br.com.techchallenge.techbites.DTOs;
+package br.com.techchallenge.techbites.dtos;
 
 import java.util.List;
 

@@ -4,6 +4,9 @@ spring:
     username: techbites
     password: password
     driver-class-name: org.postgresql.Driver
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
 
   jpa:
     hibernate:
@@ -13,3 +16,4 @@ spring:
       hibernate:
         format_sql: true
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+

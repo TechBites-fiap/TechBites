@@ -1,4 +1,4 @@
-package br.com.techchallenge.techbites.DTOs;
+package br.com.techchallenge.techbites.dtos;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
