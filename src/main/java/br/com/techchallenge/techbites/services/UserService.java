@@ -103,25 +103,5 @@ public class UserService {
         }
     }
 
-    public void changePassword(ChangePasswordDTO changePasswordDTO) {
-        User entity = this.repository.findByEmail(changePasswordDTO.email())
-                .orElseThrow(() -> new UserNotFoundException("email" , changePasswordDTO.email()));
 
-        if (!passwordEncoder.matches(changePasswordDTO.currentPassword(), entity.getPassword())) {
-            throw new InvalidCurrentPasswordException();
-        }
-
-        if (passwordEncoder.matches(changePasswordDTO.newPassword(), entity.getPassword())) {
-            throw new HandleNewPasswordSameAsCurrent();
-        }
-
-        if (!changePasswordDTO.newPassword().equals(changePasswordDTO.confirmNewPassword())) {
-            throw new HandleNewPasswordNotSameAsConfirmPassword();
-        }
-
-        entity.setPassword(passwordEncoder.encode(changePasswordDTO.newPassword()));
-        entity.setLastUpdatedAt(LocalDateTime.now());
-        this.repository.save(entity);
-
-    }
 }

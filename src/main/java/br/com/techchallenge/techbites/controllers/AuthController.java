@@ -20,19 +20,16 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "Autenticação", description = "Endpoints para login e gerenciamento de senha")
 public class AuthController {
 
-    public AuthController(AuthService authService, UserService userService) {
-        this.authService = authService;
-        this.userService = userService;
-    }
+    private final AuthService service;
 
-    @Autowired
-    private AuthService authService;
-    private final UserService userService;
+    public AuthController(AuthService service) {
+        this.service = service;
+    }
 
     @PostMapping("/login")
     @Operation(summary = "Autenticar usuário", description = "Realiza o login e retorna um token JWT")
     public ResponseEntity<String> validateLogin(@Valid @RequestBody LoginRequestDTO loginRequest) {
-        boolean isValid = authService.validateLogin(loginRequest);
+        boolean isValid = service.validateLogin(loginRequest);
 
         if (isValid) {
             return ResponseEntity.ok("Login successful");
@@ -45,7 +42,7 @@ public class AuthController {
     @PostMapping("/change-password")
     @Operation(summary = "Alterar a senha do usuário", description = "Realiza a troca de senha do usuário a partir do e-mail e senha atual")
     public ResponseEntity<Void> changePassword(@Valid @RequestBody ChangePasswordDTO changePasswordDTO) {
-        userService.changePassword(changePasswordDTO);
+        this.service.changePassword(changePasswordDTO);
         return ResponseEntity.noContent().build();
     }
 }

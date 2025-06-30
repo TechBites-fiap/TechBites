@@ -10,12 +10,12 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "tb_users")
-@SQLDelete(sql = "UPDATE tb_users SET active = false WHERE id = ?")
+@SQLDelete(sql = "UPDATE tb_users SET active = false WHERE user_id = ?")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_ID")
+    @Column(name = "user_id")
     private Long id;
 
     @Column(name = "name", nullable = false, length = 100)
