@@ -6,7 +6,9 @@ import br.com.techchallenge.techbites.entities.User;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 @Component
 public class UserMapper {
@@ -43,6 +45,9 @@ public class UserMapper {
     }
 
     public List<UserResponseDTO> toListDTO(List<User> users) {
+        if (Objects.isNull(users)) {
+            return Collections.emptyList();
+        }
         return users.stream()
                 .map(this::toDTO)
                 .toList();
