@@ -31,7 +31,7 @@ public class AddressController implements AddressControllerDoc {
 
     @Override
     @GetMapping
-    public ResponseEntity<List<AddressResponseDTO>> getAllAddresses(@RequestParam(required = false) Boolean active) {
+        public ResponseEntity<List<AddressResponseDTO>> getAllAddresses(@RequestParam(required = false) Boolean active) {
         return ResponseEntity.ok(service.findAllAddress(active));
     }
 
