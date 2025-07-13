@@ -9,6 +9,7 @@ import br.com.techchallenge.techbites.services.exceptions.ResourceNotFoundExcept
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -61,15 +62,16 @@ public class TypeService {
                 () -> new ResourceNotFoundException("Type" , "id" , id.toString())
         );
         type.setActive(true);
+        type.setLastUpdatedAt(LocalDateTime.now());
         repository.save(type);
     }
 
     public TypeResponseDTO updateTypeById(Long id, TypeRequestDTO typeDto) {
-        Type typeExiting = repository.findById(id).orElseThrow(
+        Type typeExist = repository.findById(id).orElseThrow(
                 () -> new ResourceNotFoundException("Type" , "id" , id.toString())
         );
-        mapper.updateEntity(typeExiting, typeDto);
-        return mapper.toDTO(repository.save(typeExiting));
+        mapper.updateEntity(typeExist, typeDto);
+        return mapper.toDTO(repository.save(typeExist));
     }
 
 
