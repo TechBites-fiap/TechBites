@@ -1,12 +1,14 @@
 package br.com.techchallenge.techbites.entities;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.SQLDelete;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
 @Table(name = "tb_address")
+@SQLDelete(sql = "UPDATE tb_address SET active = false WHERE address_id = ?")
 public class Address {
 
     @Id
