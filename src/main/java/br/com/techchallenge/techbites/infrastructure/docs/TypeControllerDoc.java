@@ -1,8 +1,8 @@
-package br.com.techchallenge.techbites.controllers.docs;
+package br.com.techchallenge.techbites.infrastructure.docs;
 
+import br.com.techchallenge.techbites.domain.models.Type;
 import br.com.techchallenge.techbites.dtos.TypeRequestDTO;
 import br.com.techchallenge.techbites.dtos.TypeResponseDTO;
-import br.com.techchallenge.techbites.entities.Type;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -11,14 +11,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @Tag(name = "Tipos", description = "Endpoints para gerenciamento de tipos")
 public interface TypeControllerDoc {
 
     @PostMapping
-    @Operation(summary = "Criar novo tipo", description = "Cria um novo tipo com os dados fornecidos")
-    ResponseEntity<Type> createType(@Valid @RequestBody TypeRequestDTO typeRequest);
+    ResponseEntity<Type> createType(@RequestBody @Valid TypeRequestDTO dto);
 
     @GetMapping
     @Operation(summary = "Listar tipos", description = """
@@ -37,7 +35,7 @@ public interface TypeControllerDoc {
 
     @GetMapping("/{id}")
     @Operation(summary = "Buscar tipo por ID", description = "Retorna os dados de um tipo específico")
-    ResponseEntity<Optional<TypeResponseDTO>> findTypeById(
+    ResponseEntity<TypeResponseDTO> findTypeById(
             @Parameter(description = "ID do tipo a ser buscado", example = "1") @PathVariable Long id);
 
     @PutMapping("/{id}")
