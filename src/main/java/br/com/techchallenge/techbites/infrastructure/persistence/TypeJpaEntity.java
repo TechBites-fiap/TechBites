@@ -1,4 +1,4 @@
-package br.com.techchallenge.techbites.entities;
+package br.com.techchallenge.techbites.infrastructure.persistence;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.SQLDelete;
@@ -9,7 +9,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "tb_items_type")
 @SQLDelete(sql = "UPDATE tb_items_type SET active = false WHERE id_item_type = ?")
-public class Type {
+public class TypeJpaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -68,11 +68,12 @@ public class Type {
         this.active = active;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        Type type1 = (Type) o;
-        return id == type1.id && Objects.equals(type, type1.type) && Objects.equals(createdAt, type1.createdAt) && Objects.equals(lastUpdatedAt, type1.lastUpdatedAt) && Objects.equals(active, type1.active);
+        TypeJpaEntity that = (TypeJpaEntity) o;
+        return Objects.equals(id, that.id) && Objects.equals(type, that.type) && Objects.equals(createdAt, that.createdAt) && Objects.equals(lastUpdatedAt, that.lastUpdatedAt) && Objects.equals(active, that.active);
     }
 
     @Override
@@ -84,4 +85,5 @@ public class Type {
     public String toString() {
         return "Type{" + "id=" + id + ", type='" + type + '\'' + ", createdAt=" + createdAt + ", lastUpdatedAt=" + lastUpdatedAt + ", active=" + active + '}';
     }
+
 }
