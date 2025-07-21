@@ -1,9 +1,8 @@
-package br.com.techchallenge.techbites.entities;
+package br.com.techchallenge.techbites.infrastructure.persistence;
 
-import br.com.techchallenge.techbites.entities.enums.Role;
+import br.com.techchallenge.techbites.domain.enums.Role;
 import jakarta.persistence.*;
 import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -11,7 +10,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "tb_users")
 @SQLDelete(sql = "UPDATE tb_users SET active = false WHERE user_id = ?")
-public class User {
+public class UserJpaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -107,16 +106,14 @@ public class User {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User that = (User) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(email, that.email) && Objects.equals(password, that.password) && role == that.role && Objects.equals(createdAt, that.createdAt) && Objects.equals(lastUpdatedAt, that.lastUpdatedAt);
+        UserJpaEntity that = (UserJpaEntity) o;
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(email, that.email) && Objects.equals(password, that.password) && role == that.role && Objects.equals(createdAt, that.createdAt) && Objects.equals(lastUpdatedAt, that.lastUpdatedAt) && Objects.equals(active, that.active);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(id, name, email, password, role, createdAt, lastUpdatedAt);
     }
+
 }
-
-

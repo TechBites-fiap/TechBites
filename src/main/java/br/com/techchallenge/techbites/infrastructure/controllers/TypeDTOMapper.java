@@ -15,18 +15,6 @@ import java.util.Optional;
 @Component
 public class TypeDTOMapper {
 
-
-
-    public Type toDomain(TypeRequestDTO dto) {
-        if (dto == null) return null;
-
-        Type type = new Type();
-        type.setType(dto.type());
-
-        return type;
-    }
-
-
     public TypeResponseDTO toResponseDTO(TypeJpaEntity entity) {
         if (entity == null) return null;
 

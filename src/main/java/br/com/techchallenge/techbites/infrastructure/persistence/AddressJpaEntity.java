@@ -1,4 +1,4 @@
-package br.com.techchallenge.techbites.entities;
+package br.com.techchallenge.techbites.infrastructure.persistence;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.SQLDelete;
@@ -9,7 +9,8 @@ import java.util.Objects;
 @Entity
 @Table(name = "tb_address")
 @SQLDelete(sql = "UPDATE tb_address SET active = false WHERE address_id = ?")
-public class Address {
+public class AddressJpaEntity {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -137,8 +138,8 @@ public class Address {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        Address address = (Address) o;
-        return Objects.equals(id, address.id) && Objects.equals(street, address.street) && Objects.equals(number, address.number) && Objects.equals(complement, address.complement) && Objects.equals(neighborhood, address.neighborhood) && Objects.equals(city, address.city) && Objects.equals(state, address.state) && Objects.equals(zipCode, address.zipCode) && Objects.equals(createdAt, address.createdAt) && Objects.equals(lastUpdatedAt, address.lastUpdatedAt) && Objects.equals(active, address.active);
+        AddressJpaEntity that = (AddressJpaEntity) o;
+        return Objects.equals(id, that.id) && Objects.equals(street, that.street) && Objects.equals(number, that.number) && Objects.equals(complement, that.complement) && Objects.equals(neighborhood, that.neighborhood) && Objects.equals(city, that.city) && Objects.equals(state, that.state) && Objects.equals(zipCode, that.zipCode) && Objects.equals(createdAt, that.createdAt) && Objects.equals(lastUpdatedAt, that.lastUpdatedAt) && Objects.equals(active, that.active);
     }
 
     @Override
@@ -148,6 +149,6 @@ public class Address {
 
     @Override
     public String toString() {
-        return "Address{" + "id=" + id + ", street='" + street + '\'' + ", number='" + number + '\'' + ", complement='" + complement + '\'' + ", neighborhood='" + neighborhood + '\'' + ", city='" + city + '\'' + ", state='" + state + '\'' + ", zipCode='" + zipCode + '\'' + ", createdAt=" + createdAt + ", lastUpdatedAt=" + lastUpdatedAt + ", active=" + active + '}';
+        return "AddressJpaEntity{" + "id=" + id + ", street='" + street + '\'' + ", number='" + number + '\'' + ", complement='" + complement + '\'' + ", neighborhood='" + neighborhood + '\'' + ", city='" + city + '\'' + ", state='" + state + '\'' + ", zipCode='" + zipCode + '\'' + ", createdAt=" + createdAt + ", lastUpdatedAt=" + lastUpdatedAt + ", active=" + active + '}';
     }
 }

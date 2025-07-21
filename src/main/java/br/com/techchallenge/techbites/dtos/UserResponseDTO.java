@@ -1,6 +1,6 @@
 package br.com.techchallenge.techbites.dtos;
 
-import br.com.techchallenge.techbites.entities.enums.Role;
+import br.com.techchallenge.techbites.domain.enums.Role;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.time.LocalDateTime;

@@ -1,6 +1,6 @@
 package br.com.techchallenge.techbites.dtos;
 
-import br.com.techchallenge.techbites.entities.enums.Role;
+import br.com.techchallenge.techbites.domain.enums.Role;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Email;

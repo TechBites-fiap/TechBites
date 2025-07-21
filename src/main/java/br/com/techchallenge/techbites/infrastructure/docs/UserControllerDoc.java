@@ -1,4 +1,4 @@
-package br.com.techchallenge.techbites.controllers.docs;
+package br.com.techchallenge.techbites.infrastructure.docs;
 
 import br.com.techchallenge.techbites.dtos.UserRequestDTO;
 import br.com.techchallenge.techbites.dtos.UserResponseDTO;
