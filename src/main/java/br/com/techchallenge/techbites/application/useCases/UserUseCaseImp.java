@@ -2,7 +2,6 @@ package br.com.techchallenge.techbites.application.useCases;
 
 import br.com.techchallenge.techbites.application.gateways.UserGateway;
 import br.com.techchallenge.techbites.domain.models.User;
-import br.com.techchallenge.techbites.dtos.UserResponseDTO;
 import br.com.techchallenge.techbites.infrastructure.gateways.UserEntityMapper;
 import br.com.techchallenge.techbites.infrastructure.persistence.UserJpaEntity;
 import br.com.techchallenge.techbites.services.exceptions.DuplicateKeyException;
@@ -47,7 +46,7 @@ public class UserUseCaseImp implements UserUseCase {
         domain.setLastUpdatedAt(now);
         domain.setPassword(passwordEncoder.encode(jpaEntity.getPassword()));
 
-        UserJpaEntity saveEntity = repository.createUser(mapper.toJpaEntity(domain));
+        UserJpaEntity saveEntity = repository.createUser(mapper.toEntity(domain));
         return saveEntity;
     }
 
@@ -86,7 +85,7 @@ public class UserUseCaseImp implements UserUseCase {
 
         domain.setLastUpdatedAt(LocalDateTime.now());
 
-        UserJpaEntity saveEntity = mapper.toJpaEntity(domain);
+        UserJpaEntity saveEntity = mapper.toEntity(domain);
 
         return repository.updateUser(saveEntity);
     }

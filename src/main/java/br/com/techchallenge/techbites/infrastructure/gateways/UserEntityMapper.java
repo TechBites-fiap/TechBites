@@ -23,7 +23,7 @@ public class UserEntityMapper {
         );
     }
 
-    public UserJpaEntity toJpaEntity(User domain) {
+    public UserJpaEntity toEntity(User domain) {
         if (domain == null) {
             return null;
         }

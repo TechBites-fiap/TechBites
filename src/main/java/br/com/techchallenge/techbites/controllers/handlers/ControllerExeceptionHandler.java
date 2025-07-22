@@ -191,5 +191,19 @@ public class ControllerExeceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new PasswordExceptionDTO(ex.getMessage() , error , status , method , path ));
     }
 
+    @ExceptionHandler(UnauthorizedException.class)
+    public ResponseEntity<UnauthorizedExceptionDTO> handleUnauthorizedException(
+            UnauthorizedException ex,
+            HttpServletRequest request
+    ) {
+        var error = "Unauthorized Error";
+        var status = HttpStatus.UNAUTHORIZED.value();
+        var method = request.getMethod();
+        var path = request.getRequestURI();
+
+        log.warn("Unauthorized resource");
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new UnauthorizedExceptionDTO(ex.getMessage() , error , status , method , path ));
+    }
+
 
 }

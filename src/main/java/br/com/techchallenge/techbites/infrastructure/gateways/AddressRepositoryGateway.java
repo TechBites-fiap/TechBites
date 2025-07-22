@@ -29,5 +29,20 @@ public class AddressRepositoryGateway implements AddressGateway {
         return repository.save(entityUpdate);
     }
 
+    @Override
+    public AddressJpaEntity createAddress(AddressJpaEntity entity) {
+        return repository.save(entity);
+    }
+
+    @Override
+    public void deleteAddressById(Long id) {
+        repository.deleteById(id);
+    }
+
+    @Override
+    public void enableAddress(AddressJpaEntity address) {
+        repository.save(address);
+    }
+
 
 }
