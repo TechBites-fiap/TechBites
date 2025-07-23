@@ -10,6 +10,7 @@ import br.com.techchallenge.techbites.dtos.MenuCreateDTO;
 import br.com.techchallenge.techbites.dtos.MenuUpdateDTO;
 import br.com.techchallenge.techbites.infrastructure.gateways.RestaurantEntityMapper;
 import br.com.techchallenge.techbites.services.exceptions.ResourceNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -76,6 +77,7 @@ public class MenuUseCaseImp implements MenuUseCase {
     }
 
     @Override
+    @Transactional
     public void delete(Long id) {
         Menu menu = this.findById(id);
 
@@ -83,12 +85,6 @@ public class MenuUseCaseImp implements MenuUseCase {
             return;
         }
 
-        List<MenuItem> items = menuItemGateway.findByMenuId(id);
-        for (MenuItem item : items) {
-            menuItemGateway.delete(item);
-        }
-
-        // 2. Agora, desativa o menu em si
         menuGateway.delete(menu);
     }
 

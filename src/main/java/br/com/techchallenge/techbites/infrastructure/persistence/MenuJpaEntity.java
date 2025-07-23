@@ -11,7 +11,6 @@ import java.util.Objects;
 @Entity
 @Table(name = "tb_menus")
 @SQLDelete(sql = "UPDATE tb_menus SET active = false WHERE id_menu = ?")
-@Where(clause = "active = true")
 public class MenuJpaEntity {
 
     @Id
@@ -37,7 +36,7 @@ public class MenuJpaEntity {
     @Column(nullable = false)
     private Boolean active = true;
 
-    @OneToMany(mappedBy = "menu", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "menu", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, fetch = FetchType.LAZY)
     private List<MenuItemJpaEntity> items;
 
     public Long getId() {
