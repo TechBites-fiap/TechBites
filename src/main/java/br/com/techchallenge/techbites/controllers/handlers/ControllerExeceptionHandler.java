@@ -160,7 +160,7 @@ public class ControllerExeceptionHandler {
         var path = request.getRequestURI();
 
         log.warn("The current password provided is incorrect.");
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new PasswordExceptionDTO(ex.getMessage() , error , status , method , path ));
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new PasswordExceptionDTO(ex.getMessage() , error , status , method , path ));
     }
 
     @ExceptionHandler(HandleNewPasswordSameAsCurrent.class)
@@ -169,12 +169,12 @@ public class ControllerExeceptionHandler {
             HttpServletRequest request
     ) {
         var error = "Validation Error";
-        var status = HttpStatus.BAD_REQUEST.value();
+        var status = HttpStatus.UNAUTHORIZED.value();
         var method = request.getMethod();
         var path = request.getRequestURI();
 
         log.warn("New password cannot be the same as the current password.");
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new PasswordExceptionDTO(ex.getMessage() , error , status , method , path ));
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new PasswordExceptionDTO(ex.getMessage() , error , status , method , path ));
     }
 
     @ExceptionHandler(HandleNewPasswordNotSameAsConfirmPassword.class)
@@ -183,12 +183,12 @@ public class ControllerExeceptionHandler {
             HttpServletRequest request
     ) {
         var error = "Validation Error";
-        var status = HttpStatus.BAD_REQUEST.value();
+        var status = HttpStatus.UNAUTHORIZED.value();
         var method = request.getMethod();
         var path = request.getRequestURI();
 
         log.warn("New password and confirmation do not match.");
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new PasswordExceptionDTO(ex.getMessage() , error , status , method , path ));
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new PasswordExceptionDTO(ex.getMessage() , error , status , method , path ));
     }
 
     @ExceptionHandler(UnauthorizedException.class)

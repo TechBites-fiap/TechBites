@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@Tag(name = "Address", description = "Endpoints relacionados a endereço")
+@Tag(name = "Endereço", description = "Endpoints relacionados a endereço")
 public interface AddressControllerDoc {
 
     @Operation(summary = "Atualiza um endereço por ID", description = "Atualiza os dados de um endereço existente utilizando seu ID.")
