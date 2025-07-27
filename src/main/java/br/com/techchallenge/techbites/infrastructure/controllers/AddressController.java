@@ -1,6 +1,7 @@
 package br.com.techchallenge.techbites.infrastructure.controllers;
 
 import br.com.techchallenge.techbites.application.useCases.AddressUseCase;
+import br.com.techchallenge.techbites.domain.models.Address;
 import br.com.techchallenge.techbites.dtos.AddressRequestDTO;
 import br.com.techchallenge.techbites.dtos.AddressResponseDTO;
 import br.com.techchallenge.techbites.infrastructure.docs.AddressControllerDoc;
@@ -26,8 +27,10 @@ public class AddressController implements AddressControllerDoc {
     public ResponseEntity<AddressResponseDTO> updateAddressById(
             @PathVariable Long id,
             @RequestBody AddressRequestDTO addressRequest) {
-        AddressJpaEntity entity = mapper.toJpaEntity(addressRequest);
-        AddressResponseDTO response = mapper.toResponseDTO(useCase.updateAddressById(entity, id));
+
+        Address domain = mapper.toDomain(addressRequest);
+        Address domainUpdate = useCase.updateAddressById(domain, id);
+        AddressResponseDTO response = mapper.toResponseDTO(domainUpdate);
         return ResponseEntity.ok(response);
     }
 

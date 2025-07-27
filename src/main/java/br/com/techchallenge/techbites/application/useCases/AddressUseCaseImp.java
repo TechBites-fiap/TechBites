@@ -22,7 +22,7 @@ public class AddressUseCaseImp implements AddressUseCase {
     }
 
     @Override
-    public AddressJpaEntity updateAddressById(AddressJpaEntity address, Long id) {
+    public Address updateAddressById(Address address, Long id) {
         Optional<AddressJpaEntity> found = repository.findAddressById(id);
         Address domain = mapper.toDomain(found.get());
         if (domain.isInactive()) throw new ResourceNotFoundException("Address", "id", id.toString());
@@ -38,7 +38,9 @@ public class AddressUseCaseImp implements AddressUseCase {
 
         AddressJpaEntity entityUpdate = mapper.toEntity(domain);
 
-        return repository.updateAddress(entityUpdate);
+        Address domainUpdate = mapper.toDomain(repository.updateAddress(entityUpdate));
+
+        return domainUpdate;
 
 
     }

@@ -1,5 +1,6 @@
 package br.com.techchallenge.techbites.infrastructure.controllers;
 
+import br.com.techchallenge.techbites.domain.models.Address;
 import br.com.techchallenge.techbites.dtos.AddressRequestDTO;
 import br.com.techchallenge.techbites.dtos.AddressResponseDTO;
 import br.com.techchallenge.techbites.infrastructure.persistence.AddressJpaEntity;
@@ -35,4 +36,42 @@ public class AddressDTOMapper {
                 addressJpaEntity.getLastUpdatedAt()
         );
     }
+
+    public Address toDomain(AddressRequestDTO dto) {
+        if (dto == null) return null;
+
+        return new Address(
+                null,
+                dto.street(),
+                dto.number(),
+                dto.complement(),
+                dto.neighborhood(),
+                dto.city(),
+                dto.state(),
+                dto.zipCode(),
+                null,
+                null,
+                true
+        );
+    }
+
+    public AddressResponseDTO toResponseDTO(Address domain) {
+        if (domain == null) return null;
+
+        return new AddressResponseDTO(
+                domain.getId(),
+                domain.getStreet(),
+                domain.getNumber(),
+                domain.getComplement(),
+                domain.getNeighborhood(),
+                domain.getCity(),
+                domain.getState(),
+                domain.getZipCode(),
+                domain.isActive(),
+                domain.getCreatedAt(),
+                domain.getLastUpdatedAt()
+                );
+    }
+
+
 }
