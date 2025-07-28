@@ -8,13 +8,6 @@ import br.com.techchallenge.techbites.domain.enums.Role;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.time.LocalDateTime;
-
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
 class UserTest {
 
     @Test
@@ -31,7 +24,6 @@ class UserTest {
                 true
         );
 
-        // verifica getters iniciais
         assertEquals(1L, user.getId());
         assertEquals("João Silva", user.getName());
         assertEquals("joao.silva@email", user.getEmail());
@@ -41,7 +33,6 @@ class UserTest {
         assertEquals(LocalDateTime.of(2023, 7, 27, 12, 0), user.getLastUpdatedAt());
         assertTrue(user.getActive());
 
-        // altera os campos
         user.setId(2L);
         user.setName("Pedro");
         user.setEmail("pedro@email");
@@ -53,7 +44,6 @@ class UserTest {
         user.setLastUpdatedAt(lastUpdatedNew);
         user.setActive(false);
 
-        // verifica getters atualizados
         assertEquals(2L, user.getId());
         assertEquals("Pedro", user.getName());
         assertEquals("pedro@email", user.getEmail());
@@ -83,10 +73,9 @@ class UserTest {
 
         LocalDateTime beforeUpdate = user.getLastUpdatedAt();
         if (beforeUpdate == null) {
-            beforeUpdate = LocalDateTime.MIN; // garante que não vai dar erro
+            beforeUpdate = LocalDateTime.MIN;
         }
 
-        // Delay pra garantir mudança no lastUpdatedAt
         try { Thread.sleep(10); } catch (InterruptedException ignored) {}
 
         user.update("Pedro", "pedro@email", "novaSenha", Role.ADMIN);
