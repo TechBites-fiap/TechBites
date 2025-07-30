@@ -6,15 +6,17 @@ import jakarta.validation.constraints.Positive;
 import java.math.BigDecimal;
 
 public class MenuItemCreateDTO {
-    @NotBlank(message = "O nome não pode ser vazio")
+    @NotBlank(message = "The name can not be empty.")
     private String name;
     private String description;
-    @NotNull(message = "O preço é obrigatório")
-    @Positive(message = "O preço deve ser positivo")
+    @NotNull(message = "The price can not be empty.")
+    @Positive(message = "The price must be positive.")
     private BigDecimal price;
     private String picturePath;
-    @NotNull(message = "O ID do menu é obrigatório")
+    @NotNull(message = "The ID menu can not be empty.")
     private Long menuId;
+    @NotNull(message = "The itemType can not be empty.")
+    private Long itemTypeId;
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
@@ -26,4 +28,6 @@ public class MenuItemCreateDTO {
     public void setPicturePath(String picturePath) { this.picturePath = picturePath; }
     public Long getMenuId() { return menuId; }
     public void setMenuId(Long menuId) { this.menuId = menuId; }
+    public Long getItemTypeId() { return itemTypeId; }
+    public void setItemTypeId(Long itemTypeId) { this.itemTypeId = itemTypeId; }
 }

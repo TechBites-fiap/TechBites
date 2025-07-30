@@ -10,8 +10,10 @@ public class MenuItemDTO {
     private BigDecimal price;
     private String picturePath;
     private Long menuId;
+    private Long itemTypeId;
     private LocalDateTime createdAt;
     private LocalDateTime lastUpdatedAt;
+
     public Long getIdMenuItem() { return idMenuItem; }
     public void setIdMenuItem(Long idMenuItem) { this.idMenuItem = idMenuItem; }
     public String getName() { return name; }
@@ -24,6 +26,8 @@ public class MenuItemDTO {
     public void setPicturePath(String picturePath) { this.picturePath = picturePath; }
     public Long getMenuId() { return menuId; }
     public void setMenuId(Long menuId) { this.menuId = menuId; }
+    public Long getItemTypeId() { return itemTypeId; }
+    public void setItemTypeId(Long itemTypeId) { this.itemTypeId = itemTypeId; }
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
     public LocalDateTime getLastUpdatedAt() { return lastUpdatedAt; }
