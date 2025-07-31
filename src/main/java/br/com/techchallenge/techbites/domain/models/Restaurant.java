@@ -19,6 +19,8 @@ public class Restaurant {
     private LocalDateTime lastUpdatedAt;
     private boolean active;
 
+    public Restaurant() {}
+
     public Restaurant(Long id, String name, String description, Address address, String cuisine, String openingHour, User owner, LocalDateTime createdAt, LocalDateTime lastUpdatedAt, boolean active) {
         this.id = id;
         this.name = name;
