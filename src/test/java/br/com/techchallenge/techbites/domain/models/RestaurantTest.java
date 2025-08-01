@@ -1,7 +1,7 @@
 package br.com.techchallenge.techbites.domain.models;
 
 import br.com.techchallenge.techbites.domain.enums.Role;
-import br.com.techchallenge.techbites.services.exceptions.UnauthorizedException;
+import br.com.techchallenge.techbites.application.exceptions.UnauthorizedException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -3,7 +3,7 @@ package br.com.techchallenge.techbites.infrastructure.gateways;
 import br.com.techchallenge.techbites.application.gateways.UserGateway;
 import br.com.techchallenge.techbites.infrastructure.persistence.UserJpaEntity;
 import br.com.techchallenge.techbites.infrastructure.persistence.UserRepository;
-import br.com.techchallenge.techbites.services.exceptions.UserNotFoundException;
+import br.com.techchallenge.techbites.application.exceptions.UserNotFoundException;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 

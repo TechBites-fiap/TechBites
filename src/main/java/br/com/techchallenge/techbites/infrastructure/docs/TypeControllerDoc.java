@@ -1,7 +1,7 @@
 package br.com.techchallenge.techbites.infrastructure.docs;
 
-import br.com.techchallenge.techbites.dtos.TypeRequestDTO;
-import br.com.techchallenge.techbites.dtos.TypeResponseDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.TypeRequestDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.TypeResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;

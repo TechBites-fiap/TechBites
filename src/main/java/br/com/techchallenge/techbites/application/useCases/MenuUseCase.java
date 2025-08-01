@@ -1,8 +1,8 @@
 package br.com.techchallenge.techbites.application.useCases;
 
 import br.com.techchallenge.techbites.domain.models.Menu;
-import br.com.techchallenge.techbites.dtos.MenuCreateDTO;
-import br.com.techchallenge.techbites.dtos.MenuUpdateDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.MenuCreateDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.MenuUpdateDTO;
 
 import java.util.List;
 

@@ -3,7 +3,7 @@ package br.com.techchallenge.techbites.infrastructure.gateways;
 import br.com.techchallenge.techbites.application.gateways.TypeGateway;
 import br.com.techchallenge.techbites.infrastructure.persistence.TypeJpaEntity;
 import br.com.techchallenge.techbites.infrastructure.persistence.TypeRepository;
-import br.com.techchallenge.techbites.services.exceptions.ResourceNotFoundException;
+import br.com.techchallenge.techbites.application.exceptions.ResourceNotFoundException;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 

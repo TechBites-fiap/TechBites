@@ -1,7 +1,7 @@
 package br.com.techchallenge.techbites.infrastructure.docs;
 
-import br.com.techchallenge.techbites.dtos.AddressRequestDTO;
-import br.com.techchallenge.techbites.dtos.AddressResponseDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.AddressRequestDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.AddressResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;

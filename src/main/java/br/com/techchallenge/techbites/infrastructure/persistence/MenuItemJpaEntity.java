@@ -11,7 +11,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "tb_menu_items")
 @SQLDelete(sql = "UPDATE tb_menu_items SET active = false WHERE id_menu_item = ?")
-@Where(clause = "active = true")
+//@Where(clause = "active = true")
 public class MenuItemJpaEntity {
 
     @Id

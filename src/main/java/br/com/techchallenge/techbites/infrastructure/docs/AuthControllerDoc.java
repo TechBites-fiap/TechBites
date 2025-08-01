@@ -1,7 +1,7 @@
 package br.com.techchallenge.techbites.infrastructure.docs;
 
-import br.com.techchallenge.techbites.dtos.ChangePasswordDTO;
-import br.com.techchallenge.techbites.dtos.LoginRequestDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.ChangePasswordDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.LoginRequestDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;

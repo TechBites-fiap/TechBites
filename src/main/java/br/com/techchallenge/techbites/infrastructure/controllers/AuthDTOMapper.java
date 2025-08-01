@@ -1,8 +1,7 @@
 package br.com.techchallenge.techbites.infrastructure.controllers;
 
-import br.com.techchallenge.techbites.dtos.LoginRequestDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.LoginRequestDTO;
 import br.com.techchallenge.techbites.infrastructure.persistence.UserJpaEntity;
-import jakarta.validation.Valid;
 import org.springframework.stereotype.Component;
 
 @Component

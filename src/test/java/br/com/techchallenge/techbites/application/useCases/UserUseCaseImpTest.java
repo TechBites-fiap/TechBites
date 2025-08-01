@@ -12,13 +12,13 @@ import br.com.techchallenge.techbites.domain.enums.Role;
 import br.com.techchallenge.techbites.domain.models.User;
 import br.com.techchallenge.techbites.infrastructure.gateways.UserEntityMapper;
 import br.com.techchallenge.techbites.infrastructure.persistence.UserJpaEntity;
-import br.com.techchallenge.techbites.services.exceptions.UserNotFoundException;
+import br.com.techchallenge.techbites.application.exceptions.UserNotFoundException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
-import br.com.techchallenge.techbites.services.exceptions.DuplicateKeyException;
+import br.com.techchallenge.techbites.application.exceptions.DuplicateKeyException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @ExtendWith(MockitoExtension.class)

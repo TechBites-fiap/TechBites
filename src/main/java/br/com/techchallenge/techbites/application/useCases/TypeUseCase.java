@@ -1,7 +1,7 @@
 package br.com.techchallenge.techbites.application.useCases;
 
 import br.com.techchallenge.techbites.infrastructure.persistence.TypeJpaEntity;
-import br.com.techchallenge.techbites.services.exceptions.ResourceNotFoundException;
+import br.com.techchallenge.techbites.application.exceptions.ResourceNotFoundException;
 
 import java.util.List;
 import java.util.Optional;

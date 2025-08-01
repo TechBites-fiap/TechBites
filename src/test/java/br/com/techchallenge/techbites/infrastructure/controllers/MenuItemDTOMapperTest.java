@@ -3,7 +3,7 @@ package br.com.techchallenge.techbites.infrastructure.controllers;
 import br.com.techchallenge.techbites.domain.models.Menu;
 import br.com.techchallenge.techbites.domain.models.MenuItem;
 import br.com.techchallenge.techbites.domain.models.Type;
-import br.com.techchallenge.techbites.dtos.MenuItemDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.MenuItemDTO;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

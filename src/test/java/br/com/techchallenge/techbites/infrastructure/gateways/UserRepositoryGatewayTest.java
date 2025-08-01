@@ -4,12 +4,11 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
-import java.time.LocalDateTime;
 import java.util.*;
 
 import br.com.techchallenge.techbites.infrastructure.persistence.UserJpaEntity;
 import br.com.techchallenge.techbites.infrastructure.persistence.UserRepository;
-import br.com.techchallenge.techbites.services.exceptions.UserNotFoundException;
+import br.com.techchallenge.techbites.application.exceptions.UserNotFoundException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
