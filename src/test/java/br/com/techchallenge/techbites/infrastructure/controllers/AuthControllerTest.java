@@ -1,8 +1,8 @@
 package br.com.techchallenge.techbites.infrastructure.controllers;
 
 import br.com.techchallenge.techbites.application.useCases.AuthUseCase;
-import br.com.techchallenge.techbites.dtos.ChangePasswordDTO;
-import br.com.techchallenge.techbites.dtos.LoginRequestDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.ChangePasswordDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.LoginRequestDTO;
 import br.com.techchallenge.techbites.infrastructure.persistence.UserJpaEntity;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;

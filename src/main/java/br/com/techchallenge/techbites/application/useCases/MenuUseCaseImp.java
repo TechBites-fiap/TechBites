@@ -4,12 +4,11 @@ import br.com.techchallenge.techbites.application.gateways.MenuGateway;
 import br.com.techchallenge.techbites.application.gateways.MenuItemGateway;
 import br.com.techchallenge.techbites.application.gateways.RestaurantGateway;
 import br.com.techchallenge.techbites.domain.models.Menu;
-import br.com.techchallenge.techbites.domain.models.MenuItem;
 import br.com.techchallenge.techbites.domain.models.Restaurant;
-import br.com.techchallenge.techbites.dtos.MenuCreateDTO;
-import br.com.techchallenge.techbites.dtos.MenuUpdateDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.MenuCreateDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.MenuUpdateDTO;
 import br.com.techchallenge.techbites.infrastructure.gateways.RestaurantEntityMapper;
-import br.com.techchallenge.techbites.services.exceptions.ResourceNotFoundException;
+import br.com.techchallenge.techbites.application.exceptions.ResourceNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 

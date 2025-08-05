@@ -7,9 +7,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import br.com.techchallenge.techbites.application.useCases.UserUseCase;
 import br.com.techchallenge.techbites.domain.enums.Role;
-import br.com.techchallenge.techbites.dtos.UserRequestDTO;
-import br.com.techchallenge.techbites.dtos.UserResponseDTO;
-import br.com.techchallenge.techbites.dtos.UserUpdateRequestDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.UserRequestDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.UserResponseDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.UserUpdateRequestDTO;
 import br.com.techchallenge.techbites.infrastructure.persistence.UserJpaEntity;
 import com.fasterxml.jackson.databind.ObjectMapper;
 

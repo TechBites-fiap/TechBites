@@ -13,7 +13,7 @@ import br.com.techchallenge.techbites.infrastructure.gateways.UserEntityMapper;
 import br.com.techchallenge.techbites.infrastructure.persistence.AddressJpaEntity;
 import br.com.techchallenge.techbites.infrastructure.persistence.RestaurantJpaEntity;
 import br.com.techchallenge.techbites.infrastructure.persistence.UserJpaEntity;
-import br.com.techchallenge.techbites.services.exceptions.ResourceNotFoundException;
+import br.com.techchallenge.techbites.application.exceptions.ResourceNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

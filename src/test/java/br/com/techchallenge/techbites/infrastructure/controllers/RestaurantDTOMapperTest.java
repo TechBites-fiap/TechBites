@@ -1,11 +1,10 @@
 package br.com.techchallenge.techbites.infrastructure.controllers;
 
 import br.com.techchallenge.techbites.domain.enums.Role;
-import br.com.techchallenge.techbites.dtos.*;
+import br.com.techchallenge.techbites.infrastructure.dtos.*;
 import br.com.techchallenge.techbites.infrastructure.persistence.AddressJpaEntity;
 import br.com.techchallenge.techbites.infrastructure.persistence.RestaurantJpaEntity;
 import br.com.techchallenge.techbites.infrastructure.persistence.UserJpaEntity;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

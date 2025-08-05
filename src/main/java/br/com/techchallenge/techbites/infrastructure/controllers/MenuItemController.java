@@ -1,9 +1,9 @@
 package br.com.techchallenge.techbites.infrastructure.controllers;
 
 import br.com.techchallenge.techbites.application.useCases.MenuItemUseCase;
-import br.com.techchallenge.techbites.dtos.MenuItemCreateDTO;
-import br.com.techchallenge.techbites.dtos.MenuItemDTO;
-import br.com.techchallenge.techbites.dtos.MenuItemEnableDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.MenuItemCreateDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.MenuItemDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.MenuItemEnableDTO;
 import br.com.techchallenge.techbites.infrastructure.docs.MenuItemControllerDoc;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

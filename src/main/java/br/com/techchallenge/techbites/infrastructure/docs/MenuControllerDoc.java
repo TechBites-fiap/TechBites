@@ -1,8 +1,8 @@
 package br.com.techchallenge.techbites.infrastructure.docs;
 
-import br.com.techchallenge.techbites.dtos.MenuCreateDTO;
-import br.com.techchallenge.techbites.dtos.MenuDTO;
-import br.com.techchallenge.techbites.dtos.MenuUpdateDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.MenuCreateDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.MenuDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.MenuUpdateDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;

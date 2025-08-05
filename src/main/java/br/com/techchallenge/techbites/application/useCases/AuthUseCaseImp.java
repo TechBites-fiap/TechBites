@@ -1,12 +1,12 @@
 package br.com.techchallenge.techbites.application.useCases;
 
 import br.com.techchallenge.techbites.application.gateways.UserGateway;
-import br.com.techchallenge.techbites.dtos.ChangePasswordDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.ChangePasswordDTO;
 import br.com.techchallenge.techbites.infrastructure.persistence.UserJpaEntity;
-import br.com.techchallenge.techbites.services.exceptions.HandleNewPasswordNotSameAsConfirmPassword;
-import br.com.techchallenge.techbites.services.exceptions.HandleNewPasswordSameAsCurrent;
-import br.com.techchallenge.techbites.services.exceptions.InvalidCurrentPasswordException;
-import br.com.techchallenge.techbites.services.exceptions.UserNotFoundException;
+import br.com.techchallenge.techbites.application.exceptions.HandleNewPasswordNotSameAsConfirmPassword;
+import br.com.techchallenge.techbites.application.exceptions.HandleNewPasswordSameAsCurrent;
+import br.com.techchallenge.techbites.application.exceptions.InvalidCurrentPasswordException;
+import br.com.techchallenge.techbites.application.exceptions.UserNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

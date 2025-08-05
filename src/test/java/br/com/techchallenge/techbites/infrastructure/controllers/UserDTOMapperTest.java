@@ -3,9 +3,9 @@ package br.com.techchallenge.techbites.infrastructure.controllers;
 import static org.junit.jupiter.api.Assertions.*;
 
 import br.com.techchallenge.techbites.domain.enums.Role;
-import br.com.techchallenge.techbites.dtos.UserRequestDTO;
-import br.com.techchallenge.techbites.dtos.UserResponseDTO;
-import br.com.techchallenge.techbites.dtos.UserUpdateRequestDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.UserRequestDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.UserResponseDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.UserUpdateRequestDTO;
 import br.com.techchallenge.techbites.infrastructure.persistence.UserJpaEntity;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

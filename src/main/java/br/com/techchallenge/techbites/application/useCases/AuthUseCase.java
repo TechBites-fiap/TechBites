@@ -1,6 +1,6 @@
 package br.com.techchallenge.techbites.application.useCases;
 
-import br.com.techchallenge.techbites.dtos.ChangePasswordDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.ChangePasswordDTO;
 import br.com.techchallenge.techbites.infrastructure.persistence.UserJpaEntity;
 import jakarta.validation.Valid;
 

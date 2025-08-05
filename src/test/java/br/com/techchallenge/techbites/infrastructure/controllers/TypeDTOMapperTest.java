@@ -1,7 +1,7 @@
 package br.com.techchallenge.techbites.infrastructure.controllers;
 
-import br.com.techchallenge.techbites.dtos.TypeRequestDTO;
-import br.com.techchallenge.techbites.dtos.TypeResponseDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.TypeRequestDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.TypeResponseDTO;
 
 import br.com.techchallenge.techbites.infrastructure.persistence.TypeJpaEntity;
 import org.junit.jupiter.api.DisplayName;

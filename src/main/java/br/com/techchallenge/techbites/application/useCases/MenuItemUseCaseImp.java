@@ -5,10 +5,10 @@ import br.com.techchallenge.techbites.application.gateways.TypeGateway;
 import br.com.techchallenge.techbites.domain.models.Menu;
 import br.com.techchallenge.techbites.domain.models.MenuItem;
 import br.com.techchallenge.techbites.domain.models.Type;
-import br.com.techchallenge.techbites.dtos.MenuItemCreateDTO;
-import br.com.techchallenge.techbites.dtos.MenuItemEnableDTO; // Import adicionado
+import br.com.techchallenge.techbites.infrastructure.dtos.MenuItemCreateDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.MenuItemEnableDTO; // Import adicionado
 import br.com.techchallenge.techbites.infrastructure.gateways.TypeEntityMapper;
-import br.com.techchallenge.techbites.services.exceptions.ResourceNotFoundException;
+import br.com.techchallenge.techbites.application.exceptions.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

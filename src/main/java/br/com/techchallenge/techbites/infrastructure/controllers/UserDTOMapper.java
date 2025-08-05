@@ -1,8 +1,8 @@
 package br.com.techchallenge.techbites.infrastructure.controllers;
 
-import br.com.techchallenge.techbites.dtos.UserRequestDTO;
-import br.com.techchallenge.techbites.dtos.UserResponseDTO;
-import br.com.techchallenge.techbites.dtos.UserUpdateRequestDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.UserRequestDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.UserResponseDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.UserUpdateRequestDTO;
 import br.com.techchallenge.techbites.infrastructure.persistence.UserJpaEntity;
 import org.springframework.stereotype.Component;
 

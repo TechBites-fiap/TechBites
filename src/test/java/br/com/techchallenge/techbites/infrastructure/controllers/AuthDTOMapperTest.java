@@ -1,6 +1,6 @@
 package br.com.techchallenge.techbites.infrastructure.controllers;
 
-import br.com.techchallenge.techbites.dtos.LoginRequestDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.LoginRequestDTO;
 import br.com.techchallenge.techbites.infrastructure.persistence.UserJpaEntity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

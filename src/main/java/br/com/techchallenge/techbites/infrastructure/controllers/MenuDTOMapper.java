@@ -1,7 +1,7 @@
 package br.com.techchallenge.techbites.infrastructure.controllers;
 
 import br.com.techchallenge.techbites.domain.models.Menu;
-import br.com.techchallenge.techbites.dtos.MenuDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.MenuDTO;
 import org.springframework.stereotype.Component;
 
 import java.util.stream.Collectors;

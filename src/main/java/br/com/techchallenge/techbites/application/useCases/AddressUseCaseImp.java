@@ -4,7 +4,7 @@ import br.com.techchallenge.techbites.application.gateways.AddressGateway;
 import br.com.techchallenge.techbites.domain.models.Address;
 import br.com.techchallenge.techbites.infrastructure.gateways.AddressEntityMapper;
 import br.com.techchallenge.techbites.infrastructure.persistence.AddressJpaEntity;
-import br.com.techchallenge.techbites.services.exceptions.ResourceNotFoundException;
+import br.com.techchallenge.techbites.application.exceptions.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

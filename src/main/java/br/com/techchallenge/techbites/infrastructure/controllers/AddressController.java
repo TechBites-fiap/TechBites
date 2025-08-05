@@ -2,10 +2,9 @@ package br.com.techchallenge.techbites.infrastructure.controllers;
 
 import br.com.techchallenge.techbites.application.useCases.AddressUseCase;
 import br.com.techchallenge.techbites.domain.models.Address;
-import br.com.techchallenge.techbites.dtos.AddressRequestDTO;
-import br.com.techchallenge.techbites.dtos.AddressResponseDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.AddressRequestDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.AddressResponseDTO;
 import br.com.techchallenge.techbites.infrastructure.docs.AddressControllerDoc;
-import br.com.techchallenge.techbites.infrastructure.persistence.AddressJpaEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

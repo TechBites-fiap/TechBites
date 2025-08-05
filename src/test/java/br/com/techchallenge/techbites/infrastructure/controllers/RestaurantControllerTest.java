@@ -1,8 +1,8 @@
 package br.com.techchallenge.techbites.infrastructure.controllers;
 
 import br.com.techchallenge.techbites.application.useCases.RestaurantUseCase;
-import br.com.techchallenge.techbites.dtos.RestaurantWithAddressRequestDTO;
-import br.com.techchallenge.techbites.dtos.RestaurantWithAddressResponseDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.RestaurantWithAddressRequestDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.RestaurantWithAddressResponseDTO;
 import br.com.techchallenge.techbites.infrastructure.persistence.RestaurantJpaEntity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

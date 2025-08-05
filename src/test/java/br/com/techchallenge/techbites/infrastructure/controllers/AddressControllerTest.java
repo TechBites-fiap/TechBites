@@ -12,8 +12,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import br.com.techchallenge.techbites.application.useCases.AddressUseCase;
 import br.com.techchallenge.techbites.domain.models.Address;
-import br.com.techchallenge.techbites.dtos.AddressRequestDTO;
-import br.com.techchallenge.techbites.dtos.AddressResponseDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.AddressRequestDTO;
+import br.com.techchallenge.techbites.infrastructure.dtos.AddressResponseDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
